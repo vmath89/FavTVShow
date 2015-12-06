@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+  </head>
+
+  <body ng-controller="MainController as main" style="width: 95%; margin:0 auto;">
+    <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#/">Favourite TV Shows</a>
+            </div>
+            <div>
+              
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+              </ul>
+            </div>
+          </div>
+    </nav>
+    
+   <ng-view></ng-view>
+    
+    
+    <script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+    <script data-require="angular-route@*" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular-route.js"></script>
+    <script src="script/module/app.js"></script>
+    <script src="script/configuration/config.js"></script>
+    <script src="script/controllers/main.ctrl.js"></script>
+    <script src="script/services/services.js"></script>
+  </body>
+
+</html>

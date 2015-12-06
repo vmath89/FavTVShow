@@ -1,0 +1,58 @@
+<div class="container">
+      <h2>Search TV Shows</h2>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-search" data-toggle="tooltip" title="Search"></span>
+        </span>
+        <input type="text" class="form-control" ng-model="main.searchInput" style=" margin:0 auto;" />
+      </div>
+      
+    </div>
+    <a href="">
+      <h3>A list of TV shows</h3>
+    </a>
+    <div class="row">
+      <div class="col-xs-10">
+        <a href="#/add">
+          <button type="button" class="btn btn-primary pull-left" >Add Show</button>
+        </a>
+      </div>
+      <div class="col-xs-2">
+        <select class="form-control pull-right" ng-model="main.order" ng-options="order as order.title for order in main.orders"></select>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    </div>
+    <div >
+      <!--|  orderBy:main.order.key:main.order.reverse-->
+      <ul class="list-group">
+        
+      <li class="list-group-item" ng-repeat="show in main.shows | filter:main.searchInput |  orderBy:main.order.key:main.order.reverse">
+        <div class="row">
+
+            <div class="col-sm-2">
+            <img ng-src="{{show.image}}" onerror="this.src='http://vignette4.wikia.nocookie.net/fanon/images/7/7e/Serie-tv.jpeg/revision/latest?cb=20150101064201'" class="img-rounded" alt="show.title" width="150" height="150" />
+           </div>
+           <div class="col-sm-8">
+              <div>
+                <font size="4">
+                  <a href="#/details/{{show.title}}">
+                      <b>{{show.title}}</b>
+                  </a>  
+                </font>
+                <span class="glyphicon glyphicon-star" ng-if="show.favorite"></span>
+              </div>
+              <div><b>Description: </b>{{show.desc}}</div>
+           </div>
+            <div class="col-sm-1">
+                <span class="badge">{{show.year}}</span>
+             </div>
+             <div class="col-sm-1">
+                <a href='#/edit/{{show.title}}'><i class="glyphicon glyphicon-edit" ng-click ='main.edit()' data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                <button class = 'btn-link'><i><span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="top" title="Delete" ng-click ='main.delete(show.title)'></span></i>
+                </button>
+           </div>     
+        </div>
+      </li>
+    </ul>
+    </div>

@@ -1,0 +1,110 @@
+<div>
+
+	<div class="row">
+      <div class="col-xs-2">
+      	<img ng-src="{{details.img}}" onerror="this.src='http://vignette4.wikia.nocookie.net/fanon/images/7/7e/Serie-tv.jpeg/revision/latest?cb=20150101064201'" class="img-rounded" alt="show.title" width="200" height="200" />
+      </div>
+      <div class="col-xs-10">
+        <div><b>{{details.title}}</b></div>
+        <div>{{details.desc}}</div>
+      </div>
+    </div> 
+    <section >
+					<ul class="nav nav-pills" >
+					 
+					  	<li ng-class='{active: details.isSelected(1)}'> <a href ng-click='details.selectTab(1)'>Cast</a>
+					  </li>
+					  <li ng-class='{active: details.isSelected(2)}'> <a href ng-click='details.selectTab(2)'>Reviews</a></li>
+					</ul>
+					<div>
+						<div class='panel' ng-show='details.isSelected(1)'>
+							
+						<div>
+							<!-- Trigger the modal with a button -->
+							<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit</button>
+
+							<!-- Modal -->
+							<div id="myModal" class="modal fade" role="dialog">
+							  <div class="modal-dialog">
+
+							    <!-- Modal content-->
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal">&times;</button>
+							        <h4 class="modal-title">Edit cast for {{details.title}}</h4>
+							      </div>
+							      <div class="modal-body">
+							        <form role="form">
+										    	<div class="form-group">
+										      		<label for="exprod">Executive Producers:</label>
+										      		<input type="text" class="form-control" id="exprod" ng-model = "details.shows[details.index].cast.exproducers" >
+										    	</div>
+										    	<div class="form-group">
+										      		<label for="prod">Producers:</label>
+										      		<input type="text" class="form-control" id="prod" ng-model = "details.shows[details.index].cast.producers">
+										    	</div>
+										    	<div class="form-group">
+										      		<label for="editor">Editor:</label>
+										      		<input type="text" class="form-control" id="editor" ng-model = "details.shows[details.index].cast.editor">
+										    	</div>
+										    	<div class="form-group">
+										      		<label for="cine">Cinematography:</label>
+										      		<input type="text" class="form-control" id="cine" ng-model = "details.shows[details.index].cast.cinematography">
+										    	</div>
+										  </form>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click='details.edit()'>Submit</button>
+							      </div>
+							    </div>
+
+							  </div>
+							</div>
+
+						</div>
+							<h4>Cast of {{details.title}}</h4>
+							<div><b>Executive Producers: </b>{{details.shows[details.index].cast.exproducers}}</div>
+							<div><b>Producers: </b>{{details.shows[details.index].cast.producers}}</div>
+							<div><b>Editor: </b>{{details.shows[details.index].cast.editor}}</div>
+							<div><b>Cinematography: </b>{{details.shows[details.index].cast.cinematography}}</div>
+						
+						</div>
+
+					</div>
+					
+					<div>
+						<div class='panel' ng-show='details.isSelected(2)'>
+						<h4>Reviews</h4>
+						<div></div>
+						<blockquote ng-repeat='review in details.shows[details.index].reviews'>
+							<b>Stars:{{review.stars}}</b>
+							{{review.body}}
+							<cite class='clearfix'>-{{review.author}}</cite>
+						</blockquote>
+						<!-- Review Form -->
+
+						 <form name='reviewForm'  ng-submit='reviewForm.$valid && details.addReview()' noValidate>
+								
+							<fieldset class='form-group'>
+								<select class='form-control' title='Stars' ng-model='details.review.stars' ng-options="stars for stars in [5,4,3,2,1]" required>
+									<option value=''>Rate the TV Series</option>
+									
+								</select>
+							</fieldset>
+								<textarea class='form-control' placeholder='Please give your opinion about the TV Series....' title='Review' ng-model='details.review.body' required></textarea>
+								
+							<fieldset class='form-group'>
+							</fieldset>
+							<fieldset >
+								<input class='form-control' placeholder='Please enter your email id....' type='email' title='Email' ng-model='details.review.author' required>
+							</fieldset>
+							
+							<fieldset>
+								<input type='submit' class='btn btn-primary pull-right' value= 'Submit Review'>
+							</fieldset>
+						</form> 
+					</div>
+					</div>
+	</section> 
+
+</div>
